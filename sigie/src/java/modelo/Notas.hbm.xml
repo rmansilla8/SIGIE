@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/04/2016 12:08:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Notas" table="notas" catalog="sigie" optimistic-lock="version">
+        <id name="idhistorial" type="int">
+            <column name="idhistorial" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="areaCurricular" class="modelo.AreaCurricular" fetch="select">
+            <column name="Area_curricular_idArea_curricular" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estudiante" class="modelo.Estudiante" fetch="select">
+            <column name="Estudiante_idEstudiante" not-null="true" />
+        </many-to-one>
+        <many-to-one name="grado" class="modelo.Grado" fetch="select">
+            <column name="grado_idgrado" not-null="true" />
+        </many-to-one>
+        <property name="ciclo" type="int">
+            <column name="ciclo" not-null="true" />
+        </property>
+        <property name="seccion" type="char">
+            <column name="seccion" length="1" not-null="true" />
+        </property>
+        <property name="bim1" type="java.lang.Integer">
+            <column name="bim1" />
+        </property>
+        <property name="bim2" type="java.lang.Integer">
+            <column name="bim2" />
+        </property>
+        <property name="bim3" type="java.lang.Integer">
+            <column name="bim3" />
+        </property>
+        <property name="bim4" type="java.lang.Integer">
+            <column name="bim4" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/04/2016 12:08:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Estudiante" table="estudiante" catalog="sigie" optimistic-lock="version">
+        <id name="idEstudiante" type="int">
+            <column name="idEstudiante" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="Nombre" length="45" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="Apellido" length="45" not-null="true" />
+        </property>
+        <property name="fechaDeNacimiento" type="date">
+            <column name="Fecha_de_nacimiento" length="10" not-null="true" />
+        </property>
+        <property name="cui" type="int">
+            <column name="cui" not-null="true" />
+        </property>
+        <property name="lugarDeNaciomiento" type="string">
+            <column name="Lugar_de_Naciomiento" length="45" not-null="true" />
+        </property>
+        <property name="edad" type="java.lang.Integer">
+            <column name="edad" />
+        </property>
+        <set name="encargados" table="encargado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Estudiante_idEstudiante" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Encargado" />
+        </set>
+        <set name="notases" table="notas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Estudiante_idEstudiante" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Notas" />
+        </set>
+        <set name="fichaInscripcions" table="ficha_inscripcion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Estudiante_idEstudiante" not-null="true" />
+            </key>
+            <one-to-many class="modelo.FichaInscripcion" />
+        </set>
+        <set name="reglamentos" table="reglamento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Estudiante_idEstudiante" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Reglamento" />
+        </set>
+        <set name="convenioPagoses" table="convenio_pagos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Estudiante_idEstudiante" not-null="true" />
+            </key>
+            <one-to-many class="modelo.ConvenioPagos" />
+        </set>
+    </class>
+</hibernate-mapping>

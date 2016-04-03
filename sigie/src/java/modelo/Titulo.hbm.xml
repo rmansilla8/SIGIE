@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/04/2016 12:08:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Titulo" table="titulo" catalog="sigie" optimistic-lock="version">
+        <composite-id name="id" class="modelo.TituloId">
+            <key-property name="registroTitulo" type="int">
+                <column name="Registro_titulo" />
+            </key-property>
+            <key-property name="personalDpiPersonal" type="int">
+                <column name="Personal_DPI_personal" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="personal" class="modelo.Personal" update="false" insert="false" fetch="select">
+            <column name="Personal_DPI_personal" not-null="true" />
+        </many-to-one>
+        <property name="a&#241;oGraduacion" type="date">
+            <column name="A&#241;o_graduacion" length="10" />
+        </property>
+        <property name="profesion" type="string">
+            <column name="Profesion" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

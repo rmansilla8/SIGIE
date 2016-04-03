@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/04/2016 12:08:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.DatoProfesion" table="dato_profesion" catalog="sigie" optimistic-lock="version">
+        <id name="idProfesion" type="int">
+            <column name="idProfesion" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="personal" class="modelo.Personal" fetch="select">
+            <column name="Personal_DPI" not-null="true" />
+        </many-to-one>
+        <property name="afiliacionIgss" type="java.lang.Integer">
+            <column name="Afiliacion_IGSS" />
+        </property>
+        <property name="inicioLaboral" type="date">
+            <column name="Inicio_laboral" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

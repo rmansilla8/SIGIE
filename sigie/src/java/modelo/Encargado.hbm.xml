@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/04/2016 12:08:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Encargado" table="encargado" catalog="sigie" optimistic-lock="version">
+        <id name="dpiEncargado" type="int">
+            <column name="Dpi_encargado" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="estudiante" class="modelo.Estudiante" fetch="select">
+            <column name="Estudiante_idEstudiante" not-null="true" />
+        </many-to-one>
+        <property name="nombres" type="string">
+            <column name="Nombres" length="45" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="Apellidos" length="45" not-null="true" />
+        </property>
+        <property name="residencia" type="string">
+            <column name="Residencia" length="45" not-null="true" />
+        </property>
+        <property name="nombreTrabajo" type="string">
+            <column name="Nombre_trabajo" length="45" />
+        </property>
+        <property name="parentesco" type="string">
+            <column name="Parentesco" length="10" not-null="true" />
+        </property>
+        <set name="reglamentos" table="reglamento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Encargado_Dpi_encargado" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Reglamento" />
+        </set>
+        <set name="telefonoEncargados" table="telefono_encargado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Encargado_Dpi_encargado" not-null="true" />
+            </key>
+            <one-to-many class="modelo.TelefonoEncargado" />
+        </set>
+        <set name="fichaInscripcions" table="ficha_inscripcion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Encargado_Dpi_encargado" not-null="true" />
+            </key>
+            <one-to-many class="modelo.FichaInscripcion" />
+        </set>
+        <set name="convenioPagoses" table="convenio_pagos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Encargado_Dpi_encargado" not-null="true" />
+            </key>
+            <one-to-many class="modelo.ConvenioPagos" />
+        </set>
+    </class>
+</hibernate-mapping>

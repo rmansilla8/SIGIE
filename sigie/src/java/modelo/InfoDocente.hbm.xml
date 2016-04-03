@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/04/2016 12:08:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.InfoDocente" table="info_docente" catalog="sigie" optimistic-lock="version">
+        <id name="cedulaDocente" type="string">
+            <column name="CedulaDocente" length="12" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="personal" class="modelo.Personal" fetch="select">
+            <column name="Personal_DPI" not-null="true" />
+        </many-to-one>
+        <property name="fechaEmision" type="date">
+            <column name="Fecha_emision" length="10" />
+        </property>
+        <property name="registroEscalafonario" type="string">
+            <column name="Registro_escalafonario" length="12" />
+        </property>
+        <property name="claseEscalafonaria" type="java.lang.Character">
+            <column name="Clase_escalafonaria" length="1" />
+        </property>
+        <property name="fechaDeAscenso" type="date">
+            <column name="Fecha_de_ascenso" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>
