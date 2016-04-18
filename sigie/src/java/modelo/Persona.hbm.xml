@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/04/2016 12:26:38 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Persona" table="persona" catalog="sigie" optimistic-lock="version">
+        <id name="dpi" type="string">
+            <column name="dpi" length="15" />
+            <generator class="assigned" />
+        </id>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="50" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="residencia" type="string">
+            <column name="residencia" length="45" not-null="true" />
+        </property>
+        <property name="edad" type="string">
+            <column name="edad" length="45" not-null="true" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fecha_nacimiento" length="10" not-null="true" />
+        </property>
+        <property name="estadoCivil" type="string">
+            <column name="estado_civil" length="45" not-null="true" />
+        </property>
+        <set name="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="persona_dpi" length="15" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Empleado" />
+        </set>
+        <set name="encargados" table="encargado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="persona_dpi" length="15" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Encargado" />
+        </set>
+        <set name="telefonos" table="telefono" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="persona_dpi" length="15" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Telefono" />
+        </set>
+    </class>
+</hibernate-mapping>

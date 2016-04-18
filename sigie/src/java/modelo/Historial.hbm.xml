@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/04/2016 12:26:38 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Historial" table="historial" catalog="sigie" optimistic-lock="version">
+        <id name="idhistorial" type="java.lang.Integer">
+            <column name="idhistorial" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="ciclo" class="modelo.Ciclo" fetch="select">
+            <column name="ciclo_idciclo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estudiante" class="modelo.Estudiante" fetch="select">
+            <column name="estudiante_idestudiante" not-null="true" />
+        </many-to-one>
+        <many-to-one name="grado" class="modelo.Grado" fetch="select">
+            <column name="grado_idgrado" not-null="true" />
+        </many-to-one>
+        <many-to-one name="promedio" class="modelo.Promedio" fetch="select">
+            <column name="promedio_idpromedio" not-null="true" />
+        </many-to-one>
+        <many-to-one name="puesto" class="modelo.Puesto" fetch="select">
+            <column name="puesto_idpuesto" not-null="true" />
+        </many-to-one>
+        <property name="resultado" type="string">
+            <column name="resultado" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
