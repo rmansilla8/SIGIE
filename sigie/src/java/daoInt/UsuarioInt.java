@@ -13,5 +13,5 @@ import modelo.Usuario;
  */
 public interface UsuarioInt {
     public Usuario obtenerDatosPorUsuario(Usuario usuario);
-    public Usuario logi(Usuario usuario);
+    public Usuario login(Usuario usuario);
 }

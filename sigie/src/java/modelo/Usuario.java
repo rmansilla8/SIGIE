@@ -1,5 +1,5 @@
 package modelo;
-// Generated 18/04/2016 12:26:36 AM by Hibernate Tools 4.3.1
+// Generated 19/04/2016 01:02:01 PM by Hibernate Tools 4.3.1
 
 
 
@@ -10,7 +10,7 @@ public class Usuario  implements java.io.Serializable {
 
 
      private Integer idtable1;
-     private Empleado empleado;
+     private Persona persona;
      private String nombreUser;
      private String password;
 
@@ -18,11 +18,11 @@ public class Usuario  implements java.io.Serializable {
     }
 
 	
-    public Usuario(Empleado empleado) {
-        this.empleado = empleado;
+    public Usuario(Persona persona) {
+        this.persona = persona;
     }
-    public Usuario(Empleado empleado, String nombreUser, String password) {
-       this.empleado = empleado;
+    public Usuario(Persona persona, String nombreUser, String password) {
+       this.persona = persona;
        this.nombreUser = nombreUser;
        this.password = password;
     }
@@ -34,12 +34,12 @@ public class Usuario  implements java.io.Serializable {
     public void setIdtable1(Integer idtable1) {
         this.idtable1 = idtable1;
     }
-    public Empleado getEmpleado() {
-        return this.empleado;
+    public Persona getPersona() {
+        return this.persona;
     }
     
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
     public String getNombreUser() {
         return this.nombreUser;
