@@ -6,6 +6,7 @@
 package daoInt;
 
 import java.util.List;
+
 import modelo.Persona;
 import org.hibernate.Session;
 
@@ -19,6 +20,8 @@ public interface PersonaInt {
     public void CreatePersona(Persona persona);    
     public void UpdatePersona(Persona persona);
     public void DeletePersona(Persona persona);     
+
+    
     
     
 }

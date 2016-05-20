@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+     <ui:composition template="./../../plantilla/Template.xhtml">
+
+            <ui:define name="content">
+                Administracion de Areas Curriculares
+                <h:form id="formNuveoEmp">
+                    <p:commandButton value="Crea Area Curricular" 
+                                     oncomplete="PF('dlgInsertar').show();"
+                                     update=":fromInsertar"/>
+                </h:form>
+                <p:growl id="growl" autoUpdate="true"/>              
+
+                <!--dialogo para insertar-->
+
+                <h:form id="fromInsertar">                      
+
+                    <p:dialog id="dlg" header="Insertar Datos"  
+                              showEffect="explode"
+                              hideEffect="explode"
+                              modal="true"
+                              widgetVar="dlgInsertar"
+                              resizable="false">
+                        <p:panelGrid columns="2" style="margin: 0 auto ">
+
+                            <p:outputLabel value="Area Curricular"/>
+                            <p:inputText value="#{areaBean.area.nombreArea}"   
+                                         required="true" requiredMessage="Es Obligatorio" />
+
+                            
+
+
+                            <p:commandButton  value="Guardar" 
+                                              actionListener="#{areaBean.guardarArea(ActionEvent)}"
+                                              update=":formMostrarArea:tablamostar"
+                                              oncomplete="PF('dlgInsertar').hide()"/>
+
+                            <p:commandButton value="Cancelar" 
+                                             update=":fromInsertar"
+                                             oncomplete="PF('dlgInsertar').hide()"/>
+
+                        </p:panelGrid>
+                    </p:dialog>  
+                </h:form>
+
+
+                <!--dialogo para actualizar-->
+
+
+                <h:form id="fromActualizar">                      
+
+                    <p:dialog id="dlg" header="Insertar Datos"  
+                              showEffect="explode"
+                              hideEffect="explode"
+                              modal="true"
+                              widgetVar="dlgActualizar"
+                              resizable="false">
+                        <p:panelGrid  columns="2" style="margin: 0 auto ">
+
+                            <p:outputLabel value="Area Curricular"/>
+                            <p:inputText value="#{areaBean.area.nombreArea}" 
+                                         required="true" requiredMessage="Es Obligatorio" />
+
+                         
+
+                            <p:commandButton  value="Guardar" 
+                                              actionListener="#{areaBean.ActualizarArea(ActionEvent)}"
+                                              update=":formMostrarArea:tablamostar"
+                                              oncomplete="PF('dlgActualizar').hide()"/>
+
+                            <p:commandButton value="Cancelar" 
+                                             update=":fromInsertar"
+                                             oncomplete="PF('dlgActualizar').hide()"/>
+
+
+                        </p:panelGrid>
+                    </p:dialog>  
+                </h:form>
+
+                <!--DIALOGO PARA ELIMINAR-->
+                <h:form id="fromEliminar">       
+                    <p:dialog id="dlg"   header="Desea Eliminar ?"
+                              showEffect="explode"
+                              hideEffect="explode"
+                              modal="true"
+                              widgetVar="dlgEliminar"
+                              resizable="false">
+
+                        <p:panelGrid   columns="2" style="margin: 0 auto ">
+                            
+                            <p:commandButton  value="Si" 
+                                              actionListener="#{areaBean.EliminarArea(ActionEvent)}"
+                                              update=":formMostrarArea:tablamostar"
+                                              oncomplete="PF('dlgEliminar').hide()" />
+                            <p:commandButton value="No" oncomplete="PF('dlgEliminar').hide();"/>
+
+                        </p:panelGrid>
+
+                    </p:dialog>
+
+                </h:form>
+
+
+
+                <!--TABLA PARA MOSTRAR REGISTROS-->
+                <h:form id="formMostrarArea" style="font-size: 12px">
+                    <p:dataTable id="tablamostar" value="#{areaBean.listarArea}" var="a"
+                                 emptyMessage="No hay Grados en la lista">
+                         <p:column headerText="ID Area" >
+                             <h:outputText value="#{a.idareaCurricular}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Nombre Area" >
+                            <h:outputText value="#{a.nombreArea}"/>
+                        </p:column>
+                        
+                       
+
+                        <p:column headerText="Eliminar ">
+                            <p:commandButton value="Eliminar"                                          
+                                             oncomplete="PF('dlgEliminar').show()" update=":fromEliminar" >
+                                <f:setPropertyActionListener target="#{areaBean.area}" value="#{a}"/>
+                            </p:commandButton>
+                        </p:column> 
+
+                        <p:column headerText="Modificar">
+                            <p:commandButton value="Modificar" oncomplete="PF('dlgActualizar').show();"
+                                             update=":fromActualizar">
+
+                                <f:setPropertyActionListener target="#{areaBean.area}"
+                                                             value="#{a}"/>
+                            </p:commandButton>              
+                        </p:column> 
+
+                    </p:dataTable>
+
+                </h:form> 
+
+
+
+
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
+
