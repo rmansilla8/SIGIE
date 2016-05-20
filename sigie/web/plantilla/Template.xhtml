@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -24,7 +25,7 @@
                     <p:submenu label="Inicio" icon="ui-icon-document">
                         <p:menuitem value="Paguina Inicio" url="#" />
                         <p:separator />
-                        <p:menuitem value="Salir" action="#{loginBean.cerrarSesion()}" />
+                        <p:menuitem value="Salir" url="#" />
                     </p:submenu>
                     
                     <p:submenu label="Personal" icon="ui-icon-pencil">

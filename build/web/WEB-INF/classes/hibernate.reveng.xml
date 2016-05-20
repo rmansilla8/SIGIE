@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="sigie"/>
+  <table-filter match-name="rol"/>
+  <table-filter match-name="profesiones"/>
+  <table-filter match-name="tefono"/>
+  <table-filter match-name="titulo"/>
+  <table-filter match-name="persona"/>
+  <table-filter match-name="tipotelefono"/>
+  <table-filter match-name="usuario"/>
+</hibernate-reverse-engineering>

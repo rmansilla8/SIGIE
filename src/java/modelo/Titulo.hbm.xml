@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/04/2016 07:48:29 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Titulo" table="titulo" catalog="sigie" optimistic-lock="version">
+        <id name="registroTitulo" type="int">
+            <column name="registro_titulo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="profesiones" class="modelo.Profesiones" fetch="select">
+            <column name="profesiones_idprofesiones" not-null="true" />
+        </many-to-one>
+        <property name="anioGraduacion" type="date">
+            <column name="anio_graduacion" length="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

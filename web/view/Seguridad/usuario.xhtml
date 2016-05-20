@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../plantilla/Template.xhtml">
+
+            <ui:define name="content">
+                <h1>usuarios </h1>
+
+                <h:form id="formInsertar">
+                    <p:growl id="growl" life="2000"/>
+                    <p:fieldset legend="Roles">
+                        <p:panelGrid columns="2" style="margin: 0 auto"> 
+
+                            <p:outputLabel value="Roll"/>
+                            <p:selectOneMenu value="#{usuBean.usuario.persona.dpi}">
+                                <f:selectItem itemLabel="--Seleccione--"/>
+                                <f:selectItems value="#{usuBean.listaPersona}"/>
+
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="user"/>
+                            <p:inputText value="#{usuBean.usuario.nombreUser}"/>
+
+                            <p:outputLabel value="Password"/>
+                            <p:password value="#{usuBean.usuario.password}"/>
+
+                            <p:outputLabel value="Roll"/>
+                            <p:selectOneMenu value="#{usuBean.usuario.rol.idrol}">
+                                <f:selectItem itemLabel="--Seleccione--"/>
+                                <f:selectItems value="#{usuBean.listaRol}"/>
+
+                            </p:selectOneMenu>
+
+
+                            <p:commandButton  value="Guardar"                                               
+                                              icon="ui-icon-check"/>
+                        </p:panelGrid>
+                    </p:fieldset>  
+                </h:form>
+                <!--tabla de datos--> 
+
+                <h:form id="mostrarPersonal" style="font-size: 12px">
+
+                    <p:dataTable id="tablamostar" value="#{usuBean.listaUsuario}" var="u"
+                                 emptyMessage="No hay Persona en la lista">
+
+
+                        <p:column headerText="Usuario" >
+                            <h:outputText value="#{u.nombreUser}"/>
+                        </p:column>
+
+                        <p:column headerText="Password" >
+                            <h:outputText value="#{u.password}"/>
+                        </p:column>
+
+                        <p:column headerText="Rol" >
+                            <h:outputText value="#{u.rol.rolUsuario}"/>
+                        </p:column>
+
+                        
+
+
+                    </p:dataTable>
+                </h:form>
+
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

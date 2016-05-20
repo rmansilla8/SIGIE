@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/04/2016 12:26:38 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Encargado" table="encargado" catalog="sigie" optimistic-lock="version">
+        <id name="idencargado" type="java.lang.Integer">
+            <column name="idencargado" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="persona" class="modelo.Persona" fetch="select">
+            <column name="persona_dpi" length="15" not-null="true" />
+        </many-to-one>
+        <property name="nombreTrabajo" type="string">
+            <column name="nombre_trabajo" length="45" not-null="true" />
+        </property>
+        <property name="parentesco" type="string">
+            <column name="parentesco" length="45" not-null="true" />
+        </property>
+        <set name="estudiantes" table="encargado_has_estudiante" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="encargado_idencargado" not-null="true" />
+            </key>
+            <many-to-many entity-name="modelo.Estudiante">
+                <column name="estudiante_idestudiante" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -9,8 +9,23 @@
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="modelo/CicloHasGrado.hbm.xml"/>
+    <mapping resource="modelo/Notas.hbm.xml"/>
+    <mapping resource="modelo/Puesto.hbm.xml"/>
+    <mapping resource="modelo/Grado.hbm.xml"/>
     <mapping resource="modelo/Usuario.hbm.xml"/>
-    <mapping resource="modelo/Telefono.hbm.xml"/>
+    <mapping resource="modelo/Titulo.hbm.xml"/>
+    <mapping resource="modelo/Empleado.hbm.xml"/>
+    <mapping resource="modelo/Encargado.hbm.xml"/>
     <mapping resource="modelo/Persona.hbm.xml"/>
+    <mapping resource="modelo/Estudiante.hbm.xml"/>
+    <mapping resource="modelo/Promedio.hbm.xml"/>
+    <mapping resource="modelo/Ciclo.hbm.xml"/>
+    <mapping resource="modelo/Telefono.hbm.xml"/>
+    <mapping resource="modelo/InfoDocente.hbm.xml"/>
+    <mapping resource="modelo/DatoProfesion.hbm.xml"/>
+    <mapping resource="modelo/Seccion.hbm.xml"/>
+    <mapping resource="modelo/Historial.hbm.xml"/>
+    <mapping resource="modelo/AreaCurricular.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

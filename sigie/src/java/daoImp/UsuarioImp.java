@@ -13,19 +13,19 @@ public class UsuarioImp implements UsuarioInt{
     @Override
     public Usuario obtenerDatosPorUsuario(Usuario usuario) {
       Session ses = HibernateUtil.getSessionFactory().openSession();
-        String hql = " FROM Usuario  WHERE nombreUser =:nombreUser";
+        String hql = " FROM Usuario  where username = :usename";
         Query q = ses.createQuery(hql);
-        q.setParameter("nombreUser", usuario.getNombreUser());
+        q.setParameter("username", usuario.getNombreUser());
 
         return (Usuario) q.uniqueResult(); 
     }
-  
+
     @Override
-    public Usuario login(Usuario usuario) {
-        Usuario user  = this.obtenerDatosPorUsuario(usuario);
+    public Usuario logi(Usuario usuario) {
+        Usuario user = this.obtenerDatosPorUsuario(usuario);
 
         if (user != null) {
-           if (!user.getPassword().equals(usuario.getPassword())) {
+            if (!user.getPassword().equals(usuario.getPassword())) {
                 user = null;
             }
         }

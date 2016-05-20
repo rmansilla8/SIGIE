@@ -1,5 +1,5 @@
 package modelo;
-// Generated 19/04/2016 01:02:01 PM by Hibernate Tools 4.3.1
+// Generated 18/04/2016 12:26:36 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -12,48 +12,43 @@ import java.util.Set;
 public class Persona  implements java.io.Serializable {
 
 
-     private Integer id;
      private String dpi;
-     private String nombre;
      private String apellidos;
+     private String nombre;
      private String residencia;
      private String edad;
      private Date fechaNacimiento;
      private String estadoCivil;
-     private Set<Usuario> usuarios = new HashSet<Usuario>(0);
+     private Set<Empleado> empleados = new HashSet<Empleado>(0);
+     private Set<Encargado> encargados = new HashSet<Encargado>(0);
      private Set<Telefono> telefonos = new HashSet<Telefono>(0);
 
     public Persona() {
     }
 
 	
-    public Persona(String dpi, String nombre, String apellidos, String residencia, Date fechaNacimiento, String estadoCivil) {
+    public Persona(String dpi, String apellidos, String nombre, String residencia, String edad, Date fechaNacimiento, String estadoCivil) {
         this.dpi = dpi;
-        this.nombre = nombre;
         this.apellidos = apellidos;
+        this.nombre = nombre;
         this.residencia = residencia;
+        this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
         this.estadoCivil = estadoCivil;
     }
-    public Persona(String dpi, String nombre, String apellidos, String residencia, String edad, Date fechaNacimiento, String estadoCivil, Set<Usuario> usuarios, Set<Telefono> telefonos) {
+    public Persona(String dpi, String apellidos, String nombre, String residencia, String edad, Date fechaNacimiento, String estadoCivil, Set<Empleado> empleados, Set<Encargado> encargados, Set<Telefono> telefonos) {
        this.dpi = dpi;
-       this.nombre = nombre;
        this.apellidos = apellidos;
+       this.nombre = nombre;
        this.residencia = residencia;
        this.edad = edad;
        this.fechaNacimiento = fechaNacimiento;
        this.estadoCivil = estadoCivil;
-       this.usuarios = usuarios;
+       this.empleados = empleados;
+       this.encargados = encargados;
        this.telefonos = telefonos;
     }
    
-    public Integer getId() {
-        return this.id;
-    }
-    
-    public void setId(Integer id) {
-        this.id = id;
-    }
     public String getDpi() {
         return this.dpi;
     }
@@ -61,19 +56,19 @@ public class Persona  implements java.io.Serializable {
     public void setDpi(String dpi) {
         this.dpi = dpi;
     }
-    public String getNombre() {
-        return this.nombre;
-    }
-    
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
     public String getApellidos() {
         return this.apellidos;
     }
     
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
+    }
+    public String getNombre() {
+        return this.nombre;
+    }
+    
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     public String getResidencia() {
         return this.residencia;
@@ -103,12 +98,19 @@ public class Persona  implements java.io.Serializable {
     public void setEstadoCivil(String estadoCivil) {
         this.estadoCivil = estadoCivil;
     }
-    public Set<Usuario> getUsuarios() {
-        return this.usuarios;
+    public Set<Empleado> getEmpleados() {
+        return this.empleados;
     }
     
-    public void setUsuarios(Set<Usuario> usuarios) {
-        this.usuarios = usuarios;
+    public void setEmpleados(Set<Empleado> empleados) {
+        this.empleados = empleados;
+    }
+    public Set<Encargado> getEncargados() {
+        return this.encargados;
+    }
+    
+    public void setEncargados(Set<Encargado> encargados) {
+        this.encargados = encargados;
     }
     public Set<Telefono> getTelefonos() {
         return this.telefonos;

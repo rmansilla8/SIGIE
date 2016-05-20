@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/04/2016 12:08:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.TelefonoEncargado" table="telefono_encargado" catalog="sigie" optimistic-lock="version">
+        <id name="telefono" type="int">
+            <column name="Telefono" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="encargado" class="modelo.Encargado" fetch="select">
+            <column name="Encargado_Dpi_encargado" not-null="true" />
+        </many-to-one>
+        <property name="identificador" type="string">
+            <column name="Identificador" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

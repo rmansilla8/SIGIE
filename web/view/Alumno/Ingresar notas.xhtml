@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../plantilla/Template.xhtml">
+
+            <ui:define name="content">
+                <h2 style="text-align: center">AGREGAR NOTAS DEL ALUMNO  </h2>
+
+                <h:form id="formNotas">
+                    <p:panel header="jjjj" style="width: 900px ; margin: 0 auto; text-align: center">
+                        <p:layout id="NotasAlumno" style="width: 100%; height: 150px ">
+                            <p:layoutUnit id="InfoAlumno"  position="center" style="padding: 5px; text-align: justify; font-size: 14px" size="300">
+
+                                <h:panelGrid id="gridAlumno"  columns="5" >
+                                    <p:outputLabel value="CUI Alumno "   style="font-weight: bold" />  
+                                    <p:inputText size="15"/>
+                                    <p:commandButton value="....." oncomplete="PF('dlg3').show();"
+                                                     update=":formNotas:dlgagr"/>
+
+                                    <p:outputLabel value="Fecha:" style="font-weight: bold"/>
+                                    <p:outputLabel value=" Fecha  del Sistema " style="font-weight: bold"/>
+                                </h:panelGrid>
+                                <p:separator/>
+
+                                <h:panelGrid id="gridAlumnos" columns="2">  
+                                    <p:outputLabel value="cui:"   style="font-weight: bold" /> 
+                                    <p:outputLabel id="CuiAlumno" value="#{userBean.persona.dpi}"/>
+
+                                    <p:outputLabel value="Nombres Y Apellidos:"   style="font-weight: bold" /> 
+                                    <p:outputLabel id="GradoAlumno" value="#{userBean.persona.nombre} #{userBean.persona.apellidos}"/>
+
+                                     
+                                </h:panelGrid>
+                            </p:layoutUnit> 
+
+                            <p:layoutUnit id="InfoNotas"  position="east" style="padding: 5px; text-align:center; font-size: 14px" size="200">
+                                <!--                                esto esta pendiente si sedeja o no  si se quieta esto es necesario quitar el layut infonotas-->
+ 
+
+                            </p:layoutUnit> 
+
+                        </p:layout>    
+
+
+                    </p:panel>
+
+                    <!--dialogo para buscar los alumnos / personas--> 
+
+                    <p:dialog  id="dlgagr"  widgetVar="dlg3"  modal="true" resizable="false"
+                               showEffect="explode" hideEffect="bounce"  >
+                        <h:outputText value="This dialog has nice effects." />
+
+                        <p:dataTable id="tablaPersonas"  style="width: 700px" value="#{perBean.lista}" var="p"  
+                                     rows="20" paginator="true" paginatorPosition="top"
+                                     scrollHeight="200"
+                                     emptyMessage=" No hay datos " >
+
+                            <p:column headerText="DPI">
+                                <h:outputText value="#{p.dpi}" style="color: red" />
+                            </p:column> 
+
+                            <p:column headerText="Nombre">
+                                <h:outputText value="#{p.nombre}" />
+                            </p:column> 
+
+
+                            <p:column headerText="Apellido">
+                                <h:outputText value="#{p.apellidos}" />
+                            </p:column>  
+
+                            <p:column headerText="Recidencia">
+                                <h:outputText value="#{p.residencia}" />
+                            </p:column>
+
+
+
+                            <p:column headerText="">
+                                <p:commandButton value="Seleccionar" 
+                                                 actionListener="#{userBean.agregarPersonas(p.dpi)}"
+                                                 oncomplete="PF('dlg3').hide();"                                                 
+                                                 icon="ui-icon-extlink"
+                                                 update=":formNotas:gridAlumnos"/>
+                            </p:column>
+                        </p:dataTable>
+
+                        <p:commandButton value="salir" onclick="PF('dlg3').hide();"
+                                         icon="ui-icon-exit"/>                                                
+                    </p:dialog>
+
+
+
+
+                </h:form>>
+
+
+
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 25/04/2016 07:48:29 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Tipotelefono" table="tipotelefono" catalog="sigie" optimistic-lock="version">
+        <id name="idtable1" type="int">
+            <column name="idtable1" />
+            <generator class="assigned" />
+        </id>
+        <property name="telefono" type="string">
+            <column name="telefono" length="45" />
+        </property>
+        <set name="tefonos" table="tefono" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="table1_idtable1" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Tefono" />
+        </set>
+    </class>
+</hibernate-mapping>

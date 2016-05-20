@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/04/2016 12:08:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Reglamento" table="reglamento" catalog="sigie" optimistic-lock="version">
+        <id name="idReglamento" type="int">
+            <column name="idReglamento" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="encargado" class="modelo.Encargado" fetch="select">
+            <column name="Encargado_Dpi_encargado" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estudiante" class="modelo.Estudiante" fetch="select">
+            <column name="Estudiante_idEstudiante" not-null="true" />
+        </many-to-one>
+        <property name="fechaReglamento" type="date">
+            <column name="Fecha_reglamento" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

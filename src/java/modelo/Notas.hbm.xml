@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/04/2016 12:26:38 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Notas" table="notas" catalog="sigie" optimistic-lock="version">
+        <id name="idbnota" type="java.lang.Integer">
+            <column name="idbnota" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="promedio" class="modelo.Promedio" fetch="select">
+            <column name="promedio_idpromedio" not-null="true" />
+        </many-to-one>
+        <property name="nota" type="string">
+            <column name="nota" length="45" not-null="true" />
+        </property>
+        <property name="bimestre" type="string">
+            <column name="bimestre" length="45" not-null="true" />
+        </property>
+        <set name="cicloHasGrados" table="ciclo_has_grado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bimestre_idbimestre" not-null="true" />
+            </key>
+            <one-to-many class="modelo.CicloHasGrado" />
+        </set>
+    </class>
+</hibernate-mapping>

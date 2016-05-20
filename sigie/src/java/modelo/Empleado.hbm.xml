@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18/04/2016 12:26:38 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Empleado" table="empleado" catalog="sigie" optimistic-lock="version">
+        <id name="idempleado" type="java.lang.Integer">
+            <column name="idempleado" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="datoProfesion" class="modelo.DatoProfesion" fetch="select">
+            <column name="dato_profesion_idprofesion" not-null="true" />
+        </many-to-one>
+        <many-to-one name="persona" class="modelo.Persona" fetch="select">
+            <column name="persona_dpi" length="15" not-null="true" />
+        </many-to-one>
+        <many-to-one name="titulo" class="modelo.Titulo" fetch="select">
+            <column name="titulo_registro_titulo" not-null="true" />
+        </many-to-one>
+        <set name="puestos" table="puesto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="empleado_idempleado" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Puesto" />
+        </set>
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="empleado_idempleado" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Usuario" />
+        </set>
+        <set name="infoDocentes" table="info_docente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="empleado_idempleado" not-null="true" />
+            </key>
+            <one-to-many class="modelo.InfoDocente" />
+        </set>
+    </class>
+</hibernate-mapping>

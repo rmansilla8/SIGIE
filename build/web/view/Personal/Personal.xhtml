@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../plantilla/Template.xhtml">
+
+            <ui:define name="content">
+                <h1> Datos del Empleado </h1>
+                <br/>
+                 <form id="formNuevo">
+                     <p:commandButton value=" NUEVO" actionListener="#{perBean.newPersona()}"
+                                     oncomplete="PF('dlgInsertar').show()"
+                                     update=":fromInsertar:dlg"/>                                  
+                </form>
+                <br/>
+                
+                 <!--DIALOGO PARA INSERTAR-->
+                <h:form id="fromInsertar">       
+                    <p:dialog id="dlg" header="Insertar Datos"  
+                              showEffect="explode"
+                              hideEffect="explode"
+                              modal="true"
+                              widgetVar="dlgInsertar"
+                              resizable="false">
+                        <p:panelGrid columns="2" style="margin: 0 auto ">
+
+                            <p:outputLabel value="No Dpi"/>
+                            <p:inputMask value="#{perBean.persona.dpi}" mask="9999-99999-9999"
+                                         required="true"/>
+
+                            <p:outputLabel value="Nombre"/>
+                            <p:inputText value="#{perBean.persona.nombre}"/>
+                            
+                            <p:outputLabel value="Apellido"/>
+                            <p:inputText value="#{perBean.persona.apellidos}"/>
+                            
+                            <p:outputLabel value="Recidencia"/>
+                            <p:inputText value="#{perBean.persona.residencia}"/>
+                            
+                            <p:outputLabel value="Edad"/>
+                            <p:inputText value="#{perBean.persona.edad}"/>
+                            
+                            <p:outputLabel value="Fecha de Nacimiento"/>
+                            <p:calendar value="#{perBean.persona.fechaNacimiento}" navigator="true"/>
+                            
+                            <p:outputLabel value="Email"/>
+                            <p:inputText value="#{perBean.persona.email}"/>
+                            
+
+
+
+                            <p:commandButton  value="Guardar" 
+                                              actionListener="#{perBean.newPersona()}"
+                                              update=":MostrarPersonas:tablaPersonas"
+                                              icon="ui-icon-check"
+                                              oncomplete="PF('dlgInsertar').hide()"/>
+
+
+                            <p:commandButton value="Cancelar"
+                                             oncomplete="PF('dlgInsertar').hide()"/>
+
+                        </p:panelGrid> 
+                    </p:dialog>
+                </h:form>
+                
+                  <!--DIALOGO PARA actualizar-->
+                <h:form id="formActualizar">       
+                    <p:dialog id="dlg" header="Actualizar Datos"  
+                              showEffect="explode"
+                              hideEffect="explode"
+                              modal="true"
+                              widgetVar="dlgactualizar"
+                              resizable="false">
+                        <p:panelGrid columns="2" style="margin: 0 auto ">
+
+                            <p:outputLabel value="No Dpi"/>
+                            <p:inputMask value="#{perBean.persona.dpi}" mask="9999-99999-9999"/>
+
+                            <p:outputLabel value="Nombre"/>
+                            <p:inputText value="#{perBean.persona.nombre}"/>
+                            
+                            <p:outputLabel value="Apellido"/>
+                            <p:inputText value="#{perBean.persona.apellidos}"/>
+                            
+                            <p:outputLabel value="Recidencia"/>
+                            <p:inputText value="#{perBean.persona.residencia}"/>
+                            
+                            <p:outputLabel value="Edad"/>
+                            <p:inputText value="#{perBean.persona.edad}"/>
+                            
+                            <p:outputLabel value="Fecha de Nacimiento"/>
+                            <p:calendar value="#{perBean.persona.fechaNacimiento}"/>
+                            
+                            <p:outputLabel value="Email"/>
+                            <p:inputText value="#{perBean.persona.email}"/>
+                            
+
+
+
+                            <p:commandButton  value="Guardar" 
+                                              actionListener="#{perBean.actualizarPersona()}"
+                                              update=":MostrarPersonas:tablaPersonas"
+                                              icon="ui-icon-check"
+                                              oncomplete="PF('dlgactualizar').hide()"/>
+
+
+                            <p:commandButton value="Cancelar"
+                                             oncomplete="PF('dlgactualizar').hide()"/>
+
+                        </p:panelGrid> 
+                    </p:dialog>
+                </h:form>
+                
+                 
+                  <!--DIALOGO PARA Eliminar-->
+                <h:form id="formEliminar">       
+                    <p:dialog id="dlg" header="Eliminar"  
+                              showEffect="explode"
+                              hideEffect="explode"
+                              modal="true"
+                              widgetVar="dlgEliminar"
+                              resizable="false">
+                        <p:panelGrid columns="2" style="margin: 0 auto ">
+
+                           
+
+
+                            <p:commandButton  value="Si" 
+                                              actionListener="#{perBean.eliminarPersona()}"
+                                              update=":MostrarPersonas:tablaPersonas"
+                                              icon="ui-icon-check"
+                                              oncomplete="PF('dlgEliminar').hide()"/>
+
+
+                            <p:commandButton value="No"
+                                             oncomplete="PF('dlgEliminar').hide()"/>
+
+                        </p:panelGrid> 
+                    </p:dialog>
+                </h:form>
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                 
+                 <!--TABLA MOSTRAR PERSONAS-->
+                <h:form id="MostrarPersonas" >
+                    <p:dataTable id="tablaPersonas"   value="#{perBean.lista}" var="p"  
+                                 rows="20" paginator="true" paginatorPosition="top"
+                                 scrollHeight="200"
+                                 emptyMessage=" No hay datos " >
+
+                        <p:column headerText="DPI" filterBy="dpi">
+                            <h:outputText value="#{p.dpi}" />
+                        </p:column> 
+
+                        <p:column headerText="Nombre" filterBy="nombre">
+                            <h:outputText value="#{p.nombre}" />
+                        </p:column> 
+
+
+                        <p:column headerText="Apellido">
+                            <h:outputText value="#{p.apellidos}" />
+                        </p:column>  
+
+                        <p:column headerText="Residencia">
+                            <h:outputText value="#{p.residencia}" />
+                        </p:column>
+
+                        <p:column headerText="Edad">
+                            <h:outputText value="#{p.edad}" />
+                        </p:column>
+
+
+                        <p:column headerText="Fecha de Nacimientp">
+                            <h:outputText value="#{p.fechaNacimiento}"/>
+                        </p:column>
+
+                        <p:column headerText="Email">
+                              <h:outputText value="#{p.email}" />
+                        </p:column>
+                        
+                         <p:column headerText="Actualizar">
+                             <p:commandButton value="Actualizar"   
+                                              oncomplete="PF('dlgactualizar').show()"
+                                              update=":formActualizar"> 
+                                 
+                                 
+                                 <f:setPropertyActionListener target="#{perBean.persona}"
+                                                     value="#{p}"/>
+                             </p:commandButton>
+                        </p:column>
+                        
+                         <p:column headerText="Eliminar">
+                             <p:commandButton value="Eliminar"
+                                               oncomplete="PF('dlgEliminar').show()"
+                                              update=":formEliminar">
+                                              
+                                <f:setPropertyActionListener target="#{perBean.persona}"
+                                                     value="#{p}"/> 
+                                 
+                                 
+                             </p:commandButton>
+                        </p:column>
+
+
+                    </p:dataTable>
+                </h:form>
+                
+              
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
