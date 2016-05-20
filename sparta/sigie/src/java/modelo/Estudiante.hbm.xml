@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/05/2016 10:07:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Estudiante" table="estudiante" catalog="sigie" optimistic-lock="version">
+        <id name="idestudiante" type="int">
+            <column name="idestudiante" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="persona" class="modelo.Persona" fetch="select">
+            <column name="persona_cui" length="15" not-null="true" />
+        </many-to-one>
+        <property name="lugarNacimiento" type="string">
+            <column name="lugar_nacimiento" length="10" not-null="true" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fechaNacimiento" length="10" />
+        </property>
+        <property name="edad" type="java.lang.Integer">
+            <column name="Edad" />
+        </property>
+        <set name="encargados" table="encargado_has_estudiante" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="estudiante_cui" not-null="true" />
+            </key>
+            <many-to-many entity-name="modelo.Encargado">
+                <column name="encargado_idencargado" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="historials" table="historial" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="estudiante_idestudiante" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Historial" />
+        </set>
+        <set name="alergiases" table="alergias" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="estudiante_idestudiante" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Alergias" />
+        </set>
+        <set name="notases" table="notas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="estudiante_idestudiante" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Notas" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -5,6 +5,7 @@
  */
 package daoInt;
 
+import java.util.List;
 import modelo.Persona;
 import org.hibernate.Session;
 
@@ -14,6 +15,10 @@ import org.hibernate.Session;
  */
 public interface PersonaInt {
 //    metodo para guardar en registro en la tabla de personas
-    public boolean InsertPersona(Session ses, Persona persona)throws Exception;   
+    public List<Persona> listapersona();      
+    public void CreatePersona(Persona persona);    
+    public void UpdatePersona(Persona persona);
+    public void DeletePersona(Persona persona);     
+    
     
 }

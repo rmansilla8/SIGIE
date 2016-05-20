@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/05/2016 10:07:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.NivelEducativo" table="nivel_educativo" catalog="sigie" optimistic-lock="version">
+        <id name="idnivelEducativo" type="int">
+            <column name="idnivel_educativo" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreNivel" type="string">
+            <column name="nombre_nivel" length="45" />
+        </property>
+        <set name="gradoHasSeccions" table="grado_has_seccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="nivel_educativo_idnivel_educativo" not-null="true" />
+            </key>
+            <one-to-many class="modelo.GradoHasSeccion" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -27,18 +27,18 @@
                         <p:menuitem value="Salir" action="#{loginBean.cerrarSesion()}" />
                     </p:submenu>
 
-                    <p:submenu label="Personal" icon="ui-icon-pencil">
-                        <p:menuitem value="Ver y editar" outcome="/view/Personal/Personal.xhtml" icon="ui-icon-arrowreturnthick-1-w" />         
+                    <p:submenu label="PersonaL" icon="ui-icon-pencil">
+                        <p:menuitem value="Ingreso" 
+                                    outcome="/view/Personal/Empleados.xhtml" icon="ui-icon-arrowreturnthick-1-w" />         
+                        
+                    </p:submenu>
+                    
+                    <p:submenu label="Seguridad" icon="ui-icon-pencil">
+                        <p:menuitem value="Usuario" outcome="/view/Seguridad/Usuarios.xhtml" icon="ui-icon-arrowreturnthick-1-w" />         
+                        
                     </p:submenu>
 
-                    <p:submenu label="Alumnos" icon="ui-icon-pencil"> 
-                        <p:menuitem value="Inscripcion" outcome="/view/Alumno/Alumno.xhtml" icon="ui-icon-arrowreturnthick-1-w" />         
-                        <p:menuitem value="Ingresar Notas" outcome="/view/Alumno/Ingresar notas.xhtml" icon="ui-icon-arrowreturnthick-1-w" />         
-                    </p:submenu>
-
-                    <p:submenu label="Seguridad" icon="ui-icon-pencil">                                                         
-                        <p:menuitem value="usuario" outcome="/view/Seguridad/usuario.xhtml" icon="ui-icon-arrowreturnthick-1-w" />         
-                    </p:submenu>
+                    
 
 
                 </p:menubar>
