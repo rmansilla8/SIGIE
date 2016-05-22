@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet name="./css/default.css"/>
         <h:outputStylesheet name="./css/cssLayout.css"/>
-        <title>Facelets Template</title>
+        <title>Sistema de Gestion de Informacion Estudiantil</title>
     </h:head>
 
     <h:body>
@@ -44,8 +44,13 @@
                         <p:menuitem value="Usuario" outcome="/view/Seguridad/Usuarios.xhtml" icon="ui-icon-pencil" />         
                         
                     </p:submenu>
-
                     
+                    <p:submenu label="Administracion" icon="ui-icon-pencil">
+                        <p:menuitem value="Grados" outcome="/view/Administracion/Grados.xhtml" icon="ui-icon-arrowreturnthick-1-w" />         
+                         <p:menuitem value="Area" outcome="/view/Administracion/AreaCurricular.xhtml" icon="ui-icon-arrowreturnthick-1-w" />
+                    </p:submenu>
+
+                   
 
 
                 </p:menubar>
