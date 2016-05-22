@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/05/2016 10:07:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Seccion" table="seccion" catalog="sigie" optimistic-lock="version">
+        <id name="idseccion" type="java.lang.Integer">
+            <column name="idseccion" />
+            <generator class="identity" />
+        </id>
+        <property name="NSeccion" type="char">
+            <column name="n_seccion" length="1" not-null="true" />
+        </property>
+        <set name="cicloHasGrados" table="ciclo_has_grado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="seccion_idseccion" not-null="true" />
+            </key>
+            <one-to-many class="modelo.CicloHasGrado" />
+        </set>
+        <set name="gradoHasSeccions" table="grado_has_seccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="seccion_idseccion" not-null="true" />
+            </key>
+            <one-to-many class="modelo.GradoHasSeccion" />
+        </set>
+    </class>
+</hibernate-mapping>

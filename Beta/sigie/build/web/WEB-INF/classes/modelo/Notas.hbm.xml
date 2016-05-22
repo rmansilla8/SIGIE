@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/05/2016 10:07:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Notas" table="notas" catalog="sigie" optimistic-lock="version">
+        <id name="idbnota" type="java.lang.Integer">
+            <column name="idbnota" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="ciclo" class="modelo.Ciclo" fetch="select">
+            <column name="ciclo_idciclo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estudiante" class="modelo.Estudiante" fetch="select">
+            <column name="estudiante_idestudiante" not-null="true" />
+        </many-to-one>
+        <many-to-one name="gradoHasSeccion" class="modelo.GradoHasSeccion" fetch="select">
+            <column name="grado_has_seccion_grado_idgrado" not-null="true" />
+            <column name="grado_has_seccion_seccion_idseccion" not-null="true" />
+            <column name="grado_has_seccion_area_curricular_idarea_curricular" not-null="true" />
+            <column name="grado_has_seccion_nivel_educativo_idnivel_educativo" not-null="true" />
+        </many-to-one>
+        <property name="nota" type="int">
+            <column name="nota" not-null="true" />
+        </property>
+        <property name="bimestre" type="string">
+            <column name="bimestre" length="45" not-null="true" />
+        </property>
+        <set name="cicloHasGrados" table="ciclo_has_grado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bimestre_idbimestre" not-null="true" />
+            </key>
+            <one-to-many class="modelo.CicloHasGrado" />
+        </set>
+        <set name="historials" table="historial" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="notas_idbnota" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Historial" />
+        </set>
+    </class>
+</hibernate-mapping>

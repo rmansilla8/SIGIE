@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/05/2016 10:07:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.GradoHasSeccion" table="grado_has_seccion" catalog="sigie" optimistic-lock="version">
+        <composite-id name="id" class="modelo.GradoHasSeccionId">
+            <key-property name="gradoIdgrado" type="int">
+                <column name="grado_idgrado" />
+            </key-property>
+            <key-property name="seccionIdseccion" type="int">
+                <column name="seccion_idseccion" />
+            </key-property>
+            <key-property name="areaCurricularIdareaCurricular" type="int">
+                <column name="area_curricular_idarea_curricular" />
+            </key-property>
+            <key-property name="nivelEducativoIdnivelEducativo" type="int">
+                <column name="nivel_educativo_idnivel_educativo" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="areaCurricular" class="modelo.AreaCurricular" update="false" insert="false" fetch="select">
+            <column name="area_curricular_idarea_curricular" not-null="true" />
+        </many-to-one>
+        <many-to-one name="grado" class="modelo.Grado" update="false" insert="false" fetch="select">
+            <column name="grado_idgrado" not-null="true" />
+        </many-to-one>
+        <many-to-one name="nivelEducativo" class="modelo.NivelEducativo" update="false" insert="false" fetch="select">
+            <column name="nivel_educativo_idnivel_educativo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="seccion" class="modelo.Seccion" update="false" insert="false" fetch="select">
+            <column name="seccion_idseccion" not-null="true" />
+        </many-to-one>
+        <set name="notases" table="notas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="grado_has_seccion_grado_idgrado" not-null="true" />
+                <column name="grado_has_seccion_seccion_idseccion" not-null="true" />
+                <column name="grado_has_seccion_area_curricular_idarea_curricular" not-null="true" />
+                <column name="grado_has_seccion_nivel_educativo_idnivel_educativo" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Notas" />
+        </set>
+    </class>
+</hibernate-mapping>

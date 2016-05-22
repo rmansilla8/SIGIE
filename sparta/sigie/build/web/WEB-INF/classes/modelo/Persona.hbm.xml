@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/05/2016 10:07:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Persona" table="persona" catalog="sigie" optimistic-lock="version">
+        <id name="cui" type="string">
+            <column name="cui" length="15" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="45" not-null="true" />
+        </property>
+        <property name="residencia" type="string">
+            <column name="residencia" length="45" not-null="true" />
+        </property>
+        <set name="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="persona_cui" length="15" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Empleado" />
+        </set>
+        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="persona_cui" length="15" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Usuario" />
+        </set>
+        <set name="encargados" table="encargado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="persona_cui" length="15" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Encargado" />
+        </set>
+        <set name="telefonos" table="telefono" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="persona_cui" length="15" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Telefono" />
+        </set>
+        <set name="estudiantes" table="estudiante" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="persona_cui" length="15" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Estudiante" />
+        </set>
+    </class>
+</hibernate-mapping>

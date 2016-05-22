@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19/05/2016 10:07:01 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.CicloHasGrado" table="ciclo_has_grado" catalog="sigie" optimistic-lock="version">
+        <composite-id name="id" class="modelo.CicloHasGradoId">
+            <key-property name="cicloIdciclo" type="int">
+                <column name="ciclo_idciclo" />
+            </key-property>
+            <key-property name="gradoIdgrado" type="int">
+                <column name="grado_idgrado" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="areaCurricular" class="modelo.AreaCurricular" fetch="select">
+            <column name="area_curricular_idarea_curricular" not-null="true" />
+        </many-to-one>
+        <many-to-one name="ciclo" class="modelo.Ciclo" update="false" insert="false" fetch="select">
+            <column name="ciclo_idciclo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="grado" class="modelo.Grado" update="false" insert="false" fetch="select">
+            <column name="grado_idgrado" not-null="true" />
+        </many-to-one>
+        <many-to-one name="notas" class="modelo.Notas" fetch="select">
+            <column name="bimestre_idbimestre" not-null="true" />
+        </many-to-one>
+        <many-to-one name="seccion" class="modelo.Seccion" fetch="select">
+            <column name="seccion_idseccion" not-null="true" />
+        </many-to-one>
+        <property name="estudianteIdestudiante" type="int">
+            <column name="estudiante_idestudiante" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
