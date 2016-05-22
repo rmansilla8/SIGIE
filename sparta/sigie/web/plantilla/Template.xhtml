@@ -20,21 +20,28 @@
             <h:form>  
 
 
-                <p:menubar>
-                    <p:submenu label="Inicio" icon="ui-icon-document">
+                <p:menubar style="font-size: 14px">
+                    <p:submenu label="Inicio"  icon="ui-icon-document">
                         <p:menuitem value="Paguina Inicio" url="#" />
                         <p:separator />
                         <p:menuitem value="Salir" action="#{loginBean.cerrarSesion()}" />
                     </p:submenu>
 
-                    <p:submenu label="PersonaL" icon="ui-icon-pencil">
+                    <p:submenu label="PersonaL" >
                         <p:menuitem value="Ingreso" 
-                                    outcome="/view/Personal/Empleados.xhtml" icon="ui-icon-arrowreturnthick-1-w" />         
+                                    outcome="/view/Personal/Empleados.xhtml" icon="ui-icon-exit" />         
                         
                     </p:submenu>
                     
-                    <p:submenu label="Seguridad" icon="ui-icon-pencil">
-                        <p:menuitem value="Usuario" outcome="/view/Seguridad/Usuarios.xhtml" icon="ui-icon-arrowreturnthick-1-w" />         
+                                        
+                    <p:submenu label="Inscripcion" >
+                        <p:menuitem value="1ra Inscripcion" outcome="/view/Insecripcion/Inscripcion.xhtml" icon="ui-icon-pencil" />         
+                        <p:menuitem value="nuevo Ciclo" outcome="/view/Insecripcion/Reinscripcion.xhtml" icon="ui-icon-pencil" />         
+                        
+                    </p:submenu>
+                    
+                    <p:submenu label="Seguridad" >
+                        <p:menuitem value="Usuario" outcome="/view/Seguridad/Usuarios.xhtml" icon="ui-icon-pencil" />         
                         
                     </p:submenu>
 
