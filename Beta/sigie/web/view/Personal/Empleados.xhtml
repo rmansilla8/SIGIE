@@ -32,8 +32,8 @@
                             <p:outputLabel value="Apellidos" style="font-weight: bold"/>
 
                             <p:inputMask value="#{a}" mask="9999-999999-9999" required="true"/>
-                            <p:inputText value="#{a}" placeholder="Nombres" required="true" />  
-                            <p:inputText value="#{a}" placeholder="Apellidos" required="true"/>
+                            <p:inputText value="#{a}"  required="true" />  
+                            <p:inputText value="#{a}"  required="true"/>
 
 
 
@@ -41,9 +41,9 @@
                             <p:outputLabel value="Telefono" style="font-weight: bold"/>  
                             <p:outputLabel value="Descripcion del Telefono" style="font-weight: bold"/>
 
-                            <p:inputText value="#{a}" placeholder="Direccion" required="true"/>  
-                            <p:inputText value="#{a}" placeholder="Telefono"/>                            
-                            <p:inputText value="#{a}" placeholder="Descripcion"/>
+                            <p:inputText value="#{a}"  required="true"/>  
+                            <p:inputMask value="#{a}" mask="9999-9999" required="true"/>                          
+                            <p:inputText value="#{a}" />
                         </h:panelGrid> 
 
                         Datos del Titulo del Empleado
@@ -55,9 +55,9 @@
                             <p:outputLabel value="Año de Graduacion" style="font-weight: bold"/>
                             
 
-                            <p:inputText value="#{a}" placeholder="Nombre de la Profesion"/> 
-                            <p:inputText value="#{a}" placeholder="Numero de Registro del Titulo" />  
-                            <p:inputText value="#{a}" placeholder="Año de Graduacion" />  
+                            <p:inputText value="#{a}" /> 
+                            <p:inputText value="#{a}" placeholder="Numero de Registro " />  
+                            <p:inputText value="#{a}"  />  
                             
                         </h:panelGrid> 
 
@@ -67,14 +67,14 @@
 
                             <p:outputLabel value="Cedula Docente" style="font-weight: bold"/>                            
                             <p:outputLabel value="Fecha de Emision" style="font-weight: bold"/>
-                            <p:inputText value="#{a}" placeholder="Numero de Cedula Docente"/> 
+                            <p:inputText value="#{a}" /> 
                             <p:calendar  value="#{a}" navigator="true"/>
                             
                             <p:outputLabel value="Clase Escalafonaria" style="font-weight: bold"/>
                             <p:outputLabel value="Fecha de Ascenso" style="font-weight: bold"/>
 
                             
-                            <p:inputText value="#{a}" placeholder="Clase Escalafonaria" />  
+                            <p:inputText value="#{a}"  />  
                             <p:calendar  value="#{a}" navigator="true"/>
 
                                                   
@@ -89,7 +89,7 @@
                             <p:outputLabel value="Inicio de Labores" style="font-weight: bold"/>
                            
 
-                            <p:inputText value="#{a}" placeholder="Numero de Afiliacion al IGSS"/> 
+                            <p:inputText value="#{a}" placeholder="Numero de Afiliacion "/> 
                             <p:calendar  value="#{a}" navigator="true"/>  
                             
                         </h:panelGrid>
