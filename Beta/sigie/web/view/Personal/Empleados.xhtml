@@ -3,171 +3,107 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
         <ui:composition template="./../../plantilla/Template.xhtml">
 
             <ui:define name="content">
-                REGISTRO DE EMPLEADOS
-                <h:form id="formNuveoEmp">
-                    <p:commandButton value="Crear Empleado" 
-                                     oncomplete="PF('dlgInsertar').show();"
-                                     update=":fromInsertar"/>
-                </h:form>
-                <p:growl id="growl" autoUpdate="true"/>              
+                 <h:form id="formEmpleados">
+            <p:panel header="Empleado "
+                     style="width: 700px; height: 700px; margin: 0 auto; text-align: center; font-size:15px">
+                <p:layout id="capaLayot1" style=" width: 100%; height: 575px" >                   
+                    <p:layoutUnit id="subcapa1" position="center" 
+                                  style="padding: 5px; text-align: justify; font-size: 14px; size: 400"> 
 
-                <!--dialogo para insertar-->
+                        Registro de Empleado
+                         <p:separator/>
+                         <h:panelGrid id="panelPuesto" columns="2" cellpadding="3" style="width:40%; font-size: 12px; text-align: justify"  >  
+                            <p:outputLabel value="Puesto" style="font-weight: bold"/>
+                            <p:selectOneMenu value="#{a}" />
+                        </h:panelGrid> 
+                         Datos Personales
+                         <p:separator/>
+                        <h:panelGrid id="panelEmpleado" columns="3" cellpadding="3" style="width:40%; font-size: 12px; text-align: justify"  >  
 
-                <h:form id="fromInsertar">                      
+                            <p:outputLabel value="DPI" style="font-weight: bold"/>                            
+                            <p:outputLabel value="Nombres" style="font-weight: bold"/>                            
+                            <p:outputLabel value="Apellidos" style="font-weight: bold"/>
 
-                    <p:dialog id="dlg" header="Insertar Datos"  
-                              showEffect="explode"
-                              hideEffect="explode"
-                              modal="true"
-                              widgetVar="dlgInsertar"
-                              resizable="false">
-                        <p:panelGrid columns="2" style="margin: 0 auto ">
-
-                            <p:outputLabel value="DPI"/>
-                            <p:inputMask value="#{perBean.persona.cui}" mask="9999-99999-9999" 
-                                         required="true" requiredMessage="Es Obligatorio" />
-
-                            <p:outputLabel value="Nombre"/>
-                            <p:inputText value="#{perBean.persona.nombre}"/>
-
-                            <p:outputLabel value="Apellidos"/>
-                            <p:inputText value="#{perBean.persona.apellidos}"/>
-
-                            <p:outputLabel value="Direccion"/>
-                            <p:inputText value="#{perBean.persona.residencia}"/>
+                            <p:inputMask value="#{a}" mask="9999-999999-9999" required="true"/>
+                            <p:inputText value="#{a}" placeholder="Nombres" required="true" />  
+                            <p:inputText value="#{a}" placeholder="Apellidos" required="true"/>
 
 
-                            <p:commandButton  value="Guardar" 
-                                              actionListener="#{perBean.guardarPersona(ActionEvent)}"
-                                              update=":formMostrarPersona:tablamostar"
-                                              oncomplete="PF('dlgInsertar').hide()"/>
 
-                            <p:commandButton value="Cancelar" 
-                                             update=":fromInsertar"
-                                             oncomplete="PF('dlgInsertar').hide()"/>
+                            <p:outputLabel value="Direccion" style="font-weight: bold"/>                
+                            <p:outputLabel value="Telefono" style="font-weight: bold"/>  
+                            <p:outputLabel value="Descripcion del Telefono" style="font-weight: bold"/>
 
-                        </p:panelGrid>
-                    </p:dialog>  
-                </h:form>
+                            <p:inputText value="#{a}" placeholder="Direccion" required="true"/>  
+                            <p:inputText value="#{a}" placeholder="Telefono"/>                            
+                            <p:inputText value="#{a}" placeholder="Descripcion"/>
+                        </h:panelGrid> 
 
+                        Datos del Titulo del Empleado
+                        <p:separator/>
+                        <h:panelGrid id="panelTitulo" columns="3" cellpadding="3" style="width:40%; font-size: 12px; text-align: justify"  >  
 
-                <!--dialogo para actualizar-->
-
-
-                <h:form id="fromActualizar">                      
-
-                    <p:dialog id="dlg" header="Insertar Datos"  
-                              showEffect="explode"
-                              hideEffect="explode"
-                              modal="true"
-                              widgetVar="dlgActualizar"
-                              resizable="false">
-                        <p:panelGrid  columns="2" style="margin: 0 auto ">
-
-                            <p:outputLabel value="DPI"/>
-                            <p:inputMask value="#{perBean.persona.cui}" mask="9999-99999-9999" 
-                                         required="true" requiredMessage="Es Obligatorio" />
-
-                            <p:outputLabel value="Nombre"/>
-                            <p:inputText value="#{perBean.persona.nombre}"/>
-
-                            <p:outputLabel value="Apellidos"/>
-                            <p:inputText value="#{perBean.persona.apellidos}"/>
-
-                            <p:outputLabel value="Direccion"/>
-                            <p:inputText value="#{perBean.persona.residencia}"/>
-
-
-                            <p:commandButton  value="Guardar" 
-                                              actionListener="#{perBean.ActualizarPersona(ActionEvent)}"
-                                              update=":formMostrarPersona:tablamostar"
-                                              oncomplete="PF('dlgActualizar').hide()"/>
-
-                            <p:commandButton value="Cancelar" 
-                                             update=":fromInsertar"
-                                             oncomplete="PF('dlgActualizar').hide()"/>
-
-
-                        </p:panelGrid>
-                    </p:dialog>  
-                </h:form>
-
-                <!--DIALOGO PARA ELIMINAR-->
-                <h:form id="fromEliminar">       
-                    <p:dialog id="dlg"   header="Desea Eliminar ?"
-                              showEffect="explode"
-                              hideEffect="explode"
-                              modal="true"
-                              widgetVar="dlgEliminar"
-                              resizable="false">
-
-                        <p:panelGrid   columns="2" style="margin: 0 auto ">
+                            <p:outputLabel value="Profesion" style="font-weight: bold"/>                            
+                            <p:outputLabel value="Registro del Titulo" style="font-weight: bold"/>
+                            <p:outputLabel value="Año de Graduacion" style="font-weight: bold"/>
                             
-                            <p:commandButton  value="Si" 
-                                              actionListener="#{perBean.EliminarPersona(ActionEvent)}"
-                                              update=":formMostrarPersona:tablamostar"
-                                              oncomplete="PF('dlgEliminar').hide()" />
-                            <p:commandButton value="No" oncomplete="PF('dlgEliminar').hide();"/>
 
-                        </p:panelGrid>
+                            <p:inputText value="#{a}" placeholder="Nombre de la Profesion"/> 
+                            <p:inputText value="#{a}" placeholder="Numero de Registro del Titulo" />  
+                            <p:inputText value="#{a}" placeholder="Año de Graduacion" />  
+                            
+                        </h:panelGrid> 
 
-                    </p:dialog>
+                        Informacion Docente
+                        <p:separator/>
+                        <h:panelGrid id="panelDocente" columns="2" cellpadding="2" style="width:40%; font-size: 12px; text-align: justify"  >  
 
-                </h:form>
+                            <p:outputLabel value="Cedula Docente" style="font-weight: bold"/>                            
+                            <p:outputLabel value="Fecha de Emision" style="font-weight: bold"/>
+                            <p:inputText value="#{a}" placeholder="Numero de Cedula Docente"/> 
+                            <p:calendar  value="#{a}" navigator="true"/>
+                            
+                            <p:outputLabel value="Clase Escalafonaria" style="font-weight: bold"/>
+                            <p:outputLabel value="Fecha de Ascenso" style="font-weight: bold"/>
 
+                            
+                            <p:inputText value="#{a}" placeholder="Clase Escalafonaria" />  
+                            <p:calendar  value="#{a}" navigator="true"/>
 
+                                                  
+                          
+                        </h:panelGrid>
+                        
+                        Datos Profesionales
+                        <p:separator/>
+                        <h:panelGrid id="panelDatosProfesionales" columns="2" cellpadding="2" style="width:40%; font-size: 12px; text-align: justify"  >  
 
-                <!--TABLA PARA MOSTRAR REGISTROS-->
-                <h:form id="formMostrarPersona" style="font-size: 12px">
-                    <p:dataTable id="tablamostar" value="#{perBean.listarPersona}" var="p"
-                                 emptyMessage="No hay Persona en la lista">
-                        <p:column headerText="DPI" >
-                            <h:outputText value="#{p.cui}"/>
-                        </p:column>
+                            <p:outputLabel value="Afiliacion al IGSS" style="font-weight: bold"/>                            
+                            <p:outputLabel value="Inicio de Labores" style="font-weight: bold"/>
+                           
 
-                        <p:column headerText="NOMBRE" >
-                            <h:outputText value="#{p.nombre}"/>
-                        </p:column>
+                            <p:inputText value="#{a}" placeholder="Numero de Afiliacion al IGSS"/> 
+                            <p:calendar  value="#{a}" navigator="true"/>  
+                            
+                        </h:panelGrid>
+                    </p:layoutUnit>
+                        
+                </p:layout>
+                <br></br>
+                <p:commandButton value="Guardar" style="width: 150px; height: 50px"   actionListener="#{a}"/>
+                <p:commandButton value="Cancelar" style="width: 150px; height: 50px"   actionListener="#{a}"/>
+                
+                
+            </p:panel>
 
-                        <p:column headerText="APELLIDO" >
-                            <h:outputText value="#{p.apellidos}"/>
-                        </p:column>
-
-                        <p:column headerText="RECIDENCIA" >
-                            <h:outputText value="#{p.residencia}"/>
-                        </p:column>
-
-                        <p:column headerText="Eliminar ">
-                            <p:commandButton value="Eliminar"                                          
-                                             oncomplete="PF('dlgEliminar').show()" update=":fromEliminar" >
-                                <f:setPropertyActionListener target="#{perBean.persona}" value="#{p}"/>
-                            </p:commandButton>
-                        </p:column> 
-
-                        <p:column headerText="Modificar">
-                            <p:commandButton value="Modificar" oncomplete="PF('dlgActualizar').show();"
-                                             update=":fromActualizar">
-
-                                <f:setPropertyActionListener target="#{perBean.persona}"
-                                                             value="#{p}"/>
-                            </p:commandButton>              
-                        </p:column> 
-
-                    </p:dataTable>
-
-                </h:form> 
-
-
-
-
+        </h:form>
             </ui:define>
 
         </ui:composition>
