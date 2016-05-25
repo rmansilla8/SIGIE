@@ -3,98 +3,59 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package daoImp;
+package DaoImp;
 
-import daoInt.PersonaInt;
+import DaoInt.PersonaInt;
 import java.util.List;
 import modelo.Persona;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-import util.HibernateUtil;
 
 /**
  *
  * @author sparta
  */
-public class PersonaImp implements PersonaInt {
+public class PersonaImp implements PersonaInt{
 
     @Override
-    public List<Persona> listapersona() {
-     List<Persona> listarpersona=null;
-        Session ses = HibernateUtil.getSessionFactory().openSession();
-        Transaction ts = ses.beginTransaction();
-        String hql="from Persona";
-         
-        
-        try {
-            listarpersona =ses.createQuery(hql).list();
-            ts.commit();
-            ses.close();
-        } catch (Exception e) {
-             System.out.println(e.getMessage());
-             ts.rollback();
-        }
-        
-        return listarpersona;
+    public boolean insert(Session ses, Persona persona) throws Exception {
+     ses.save(persona);
+     return true;
     }
-
-    @Override
-    public void CreatePersona(Persona persona) {
-    Session ses = null;
-     
-        try {
-            ses = HibernateUtil.getSessionFactory().openSession();
-            ses.beginTransaction();
-            ses.save(persona);
-            ses.getTransaction().commit();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            ses.getTransaction().rollback();
-        }finally{
-        if(ses!=null){
-        ses.close();
-        }
-        }
-    }
-
-    @Override
-    public void UpdatePersona(Persona persona) {
-    Session ses = null;
-     
-        try {
-            ses = HibernateUtil.getSessionFactory().openSession();
-            ses.beginTransaction();
-            ses.update(persona);
-            ses.getTransaction().commit();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            ses.getTransaction().rollback();
-        }finally{
-        if(ses!=null){
-        ses.close();
-        }
-        }
-    }
-
-    @Override
-    public void DeletePersona(Persona persona) {
-       Session ses = null;
-     
-        try {
-            ses = HibernateUtil.getSessionFactory().openSession();
-            ses.beginTransaction();
-            ses.delete(persona);
-            ses.getTransaction().commit();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            ses.getTransaction().rollback();
-        }finally{
-        if(ses!=null){
-        ses.close();
-        }
-        }
-    }
-
     
-   
+     @Override
+    public boolean update(Session ses, Persona persona) throws Exception {
+    ses.update(persona);
+     return true;
+    }
+
+    @Override
+    public boolean delete(Session ses, Persona persona) throws Exception {
+   ses.delete(persona);
+     return true;
+    }
+    
+
+    @Override
+    public Persona getUtimoRegistro(Session ses) throws Exception {
+    String hql ="from Persona Order by cui desc";
+        Query query=ses.createQuery(hql).setMaxResults(+1);
+        
+        return (Persona) query.uniqueResult();
+    }
+
+    @Override
+    public Persona getByKey(Session ses, String cui) throws Exception {
+      String hql ="from Persona where cui = :cui";
+        Query query=ses.createQuery(hql);
+        query.setParameter("cui", cui);
+        
+        return  (Persona) query.uniqueResult();
+    }
+
+    @Override
+    public List<Persona> getAll(Session ses) throws Exception {
+    return ses.createCriteria(Persona.class).list();
+    }
+    
 }

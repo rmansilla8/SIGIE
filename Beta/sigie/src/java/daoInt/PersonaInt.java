@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package daoInt;
+package DaoInt;
 
 import java.util.List;
 import modelo.Persona;
@@ -14,11 +14,13 @@ import org.hibernate.Session;
  * @author sparta
  */
 public interface PersonaInt {
-//    metodo para guardar en registro en la tabla de personas
-    public List<Persona> listapersona();      
-    public void CreatePersona(Persona persona);    
-    public void UpdatePersona(Persona persona);
-    public void DeletePersona(Persona persona);     
+    public boolean insert(Session ses, Persona persona )throws Exception;  
+    public boolean update(Session ses, Persona persona )throws Exception;  
+    public boolean delete(Session ses, Persona persona )throws Exception;  
     
+    
+    public List<Persona> getAll(Session ses)throws Exception; 
+    public Persona getUtimoRegistro(Session ses)throws Exception;
+    public Persona getByKey(Session ses, String dpi)throws Exception;
     
 }

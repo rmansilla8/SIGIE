@@ -1,24 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 19/05/2016 10:07:01 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 24/05/2016 11:12:07 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Titulo" table="titulo" catalog="sigie" optimistic-lock="version">
         <id name="registrotitulo" type="int">
             <column name="registrotitulo" />
             <generator class="assigned" />
         </id>
-        <property name="aniograduacion" type="date">
-            <column name="aniograduacion" length="0" not-null="true" />
+        <many-to-one name="empleado" class="modelo.Empleado" fetch="select">
+            <column name="empleado_idempleado" not-null="true" />
+        </many-to-one>
+        <property name="aniograduacion" type="string">
+            <column name="aniograduacion" length="4" not-null="true" />
         </property>
         <property name="profesion" type="string">
             <column name="profesion" length="100" not-null="true" />
         </property>
-        <set name="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="tituloregistrotitulo" not-null="true" />
-            </key>
-            <one-to-many class="modelo.Empleado" />
-        </set>
     </class>
 </hibernate-mapping>

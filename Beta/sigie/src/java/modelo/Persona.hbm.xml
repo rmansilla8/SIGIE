@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 19/05/2016 10:07:01 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 24/05/2016 11:12:07 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Persona" table="persona" catalog="sigie" optimistic-lock="version">
         <id name="cui" type="string">
@@ -23,23 +23,11 @@
             </key>
             <one-to-many class="modelo.Empleado" />
         </set>
-        <set name="usuarios" table="usuario" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="persona_cui" length="15" not-null="true" />
-            </key>
-            <one-to-many class="modelo.Usuario" />
-        </set>
         <set name="encargados" table="encargado" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="persona_cui" length="15" not-null="true" />
             </key>
             <one-to-many class="modelo.Encargado" />
-        </set>
-        <set name="telefonos" table="telefono" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="persona_cui" length="15" not-null="true" />
-            </key>
-            <one-to-many class="modelo.Telefono" />
         </set>
         <set name="estudiantes" table="estudiante" inverse="true" lazy="true" fetch="select">
             <key>

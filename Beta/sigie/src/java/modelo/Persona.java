@@ -1,5 +1,5 @@
 package modelo;
-// Generated 19/05/2016 10:06:57 PM by Hibernate Tools 4.3.1
+// Generated 24/05/2016 11:12:06 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -16,9 +16,7 @@ public class Persona  implements java.io.Serializable {
      private String apellidos;
      private String residencia;
      private Set<Empleado> empleados = new HashSet<Empleado>(0);
-     private Set<Usuario> usuarios = new HashSet<Usuario>(0);
      private Set<Encargado> encargados = new HashSet<Encargado>(0);
-     private Set<Telefono> telefonos = new HashSet<Telefono>(0);
      private Set<Estudiante> estudiantes = new HashSet<Estudiante>(0);
 
     public Persona() {
@@ -31,15 +29,13 @@ public class Persona  implements java.io.Serializable {
         this.apellidos = apellidos;
         this.residencia = residencia;
     }
-    public Persona(String cui, String nombre, String apellidos, String residencia, Set<Empleado> empleados, Set<Usuario> usuarios, Set<Encargado> encargados, Set<Telefono> telefonos, Set<Estudiante> estudiantes) {
+    public Persona(String cui, String nombre, String apellidos, String residencia, Set<Empleado> empleados, Set<Encargado> encargados, Set<Estudiante> estudiantes) {
        this.cui = cui;
        this.nombre = nombre;
        this.apellidos = apellidos;
        this.residencia = residencia;
        this.empleados = empleados;
-       this.usuarios = usuarios;
        this.encargados = encargados;
-       this.telefonos = telefonos;
        this.estudiantes = estudiantes;
     }
    
@@ -78,26 +74,12 @@ public class Persona  implements java.io.Serializable {
     public void setEmpleados(Set<Empleado> empleados) {
         this.empleados = empleados;
     }
-    public Set<Usuario> getUsuarios() {
-        return this.usuarios;
-    }
-    
-    public void setUsuarios(Set<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
     public Set<Encargado> getEncargados() {
         return this.encargados;
     }
     
     public void setEncargados(Set<Encargado> encargados) {
         this.encargados = encargados;
-    }
-    public Set<Telefono> getTelefonos() {
-        return this.telefonos;
-    }
-    
-    public void setTelefonos(Set<Telefono> telefonos) {
-        this.telefonos = telefonos;
     }
     public Set<Estudiante> getEstudiantes() {
         return this.estudiantes;
