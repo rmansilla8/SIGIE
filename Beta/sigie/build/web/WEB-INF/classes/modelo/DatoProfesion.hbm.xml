@@ -1,21 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24/05/2016 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 19/05/2016 10:07:01 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.DatoProfesion" table="dato_profesion" catalog="sigie" optimistic-lock="version">
         <id name="idprofesion" type="int">
             <column name="idprofesion" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="empleado" class="modelo.Empleado" fetch="select">
-            <column name="empleado_idempleado" not-null="true" />
-        </many-to-one>
         <property name="igss" type="java.lang.Integer">
             <column name="igss" />
         </property>
         <property name="inicioLabores" type="date">
             <column name="inicio_labores" length="10" />
         </property>
+        <set name="empleados" table="empleado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="datoprofesionidprofesion" not-null="true" />
+            </key>
+            <one-to-many class="modelo.Empleado" />
+        </set>
     </class>
 </hibernate-mapping>

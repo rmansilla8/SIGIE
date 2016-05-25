@@ -1,117 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
+        <h:link value="Entrar"  outcome="/view/Bienvenido.xhtml"/>
         
-        <p:separator/>
-             <h:form id="formEmpleados">
-                 <p:growl id="growl" autoUpdate="true"/>   
-                    <p:panel header="Empleado "
-                             style="width: 700px; height: 700px; margin: 0 auto; text-align: center; font-size:15px">
-                        <p:layout id="capaLayot1" style=" width: 100%; height: 575px" >                   
-                            <p:layoutUnit id="subcapa1" position="center" 
-                                          style="padding: 5px; text-align: justify; font-size: 14px; size: 400"> 
-
-                                Registro de Empleado
-                                <p:separator/>
-                                <h:panelGrid id="Pgrig" columns="2">
-                                    <p:outputLabel value="Puesto:" />
-                                    <p:selectOneMenu value="#{pstBean.puesto.idpuesto}">
-                                        <f:selectItem itemLabel="-- Seleccione --"/>
-                                        <f:selectItems value="#{pstBean.listaPuesto}"/>
-
-                                    </p:selectOneMenu>                   
-                                </h:panelGrid> 
-                                Datos Personales
-                                <p:separator/>
-                                <h:panelGrid id="panelEmpleado" columns="3" cellpadding="3" style="width:40%; font-size: 12px; text-align: justify"  >  
-
-                                    <p:outputLabel value="DPI" style="font-weight: bold"/>                            
-                                    <p:outputLabel value="Nombres" style="font-weight: bold"/>                            
-                                    <p:outputLabel value="Apellidos" style="font-weight: bold"/>
-
-                                    <p:inputMask value="#{pstBean.persona.cui}" mask="9999-99999-9999" required="true"/>
-                                    <p:inputText value="#{pstBean.persona.nombre}"  required="true" />  
-                                    <p:inputText value="#{pstBean.persona.apellidos}"  required="true"/>
-
-
-
-                                    <p:outputLabel value="Direccion" style="font-weight: bold"/>                
-                                    <p:outputLabel value="Telefono" style="font-weight: bold"/>  
-                                    <p:outputLabel value="" style="font-weight: bold"/>
-
-                                    <p:inputText value="#{pstBean.persona.residencia}"  required="true"/>  
-                                    <p:inputMask value="#{pstBean.empleado.telefonoempleado}" mask="9999-9999"/>                          
-                                    <p:outputLabel value="" style="font-weight: bold"/>
-                                </h:panelGrid> 
-
-                                Datos del Titulo del Empleado
-                                <p:separator/>
-                                <h:panelGrid id="panelTitulo" columns="3" cellpadding="3" style="width:40%; font-size: 12px; text-align: justify"  >  
-
-                                    <p:outputLabel value="Profesion" style="font-weight: bold"/>                            
-                                    <p:outputLabel value="Registro del Titulo" style="font-weight: bold"/>
-                                    <p:outputLabel value="Año de Graduacion" style="font-weight: bold"/>
-
-
-                                    <p:inputText value="#{pstBean.titulo.profesion}" /> 
-                                    <p:inputText value="#{pstBean.titulo.registrotitulo}" placeholder="Numero de Registro " />  
-                                    <p:inputMask value="#{pstBean.titulo.aniograduacion}" mask="9999" />  
-
-                                </h:panelGrid> 
-
-                                Informacion Docente
-                                <p:separator/>
-                                <h:panelGrid id="panelDocente" columns="2" cellpadding="2" style="width:40%; font-size: 12px; text-align: justify"  >  
-
-                                    <p:outputLabel value="Cedula Docente" style="font-weight: bold"/>                            
-                                    <p:outputLabel value="Fecha de Emision" style="font-weight: bold"/>
-                                    <p:inputText value="#{pstBean.infodocente.ceduladocente}" /> 
-                                    <p:calendar  value="#{pstBean.infodocente.fechaemision}" navigator="true"/>
-
-                                    <p:outputLabel value="Clase Escalafonaria" style="font-weight: bold"/>
-                                    <p:outputLabel value="Fecha de Ascenso" style="font-weight: bold"/>
-
-
-                                    <p:inputText value="#{pstBean.infodocente.claseescalafonaria}"  />  
-                                    <p:calendar  value="#{pstBean.infodocente.fechaascenso}" navigator="true"/>
-
-
-
-                                </h:panelGrid>
-
-                                Datos Profesionales
-                                <p:separator/>
-                                <h:panelGrid id="panelDatosProfesionales" columns="2" cellpadding="2" style="width:40%; font-size: 12px; text-align: justify"  >  
-
-                                    <p:outputLabel value="Afiliacion al IGSS" style="font-weight: bold"/>                            
-                                    <p:outputLabel value="Inicio de Labores" style="font-weight: bold"/>
-
-
-                                    <p:inputText value="#{pstBean.datosprofesion.igss}" placeholder="Numero de Afiliacion "/> 
-                                    <p:calendar  value="#{pstBean.datosprofesion.inicioLabores}" navigator="true"/>  
-
-                                </h:panelGrid>
-                            </p:layoutUnit>
-
-                        </p:layout>
-                        <br></br>
-                        <p:commandButton value="Guardar" style="width: 150px; height: 50px"   actionListener="#{pstBean.guardar()}"/>
-                        <p:commandButton value="Cancelar" style="width: 150px; height: 50px"  actionListener="#{pstBean.limpiar()}" />
-
-
-                    </p:panel>
-
-                </h:form>
-
-
-
     </h:body>
 </html>
 

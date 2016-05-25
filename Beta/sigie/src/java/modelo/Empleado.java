@@ -1,5 +1,5 @@
 package modelo;
-// Generated 24/05/2016 11:12:06 PM by Hibernate Tools 4.3.1
+// Generated 19/05/2016 10:06:57 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,30 +12,27 @@ public class Empleado  implements java.io.Serializable {
 
 
      private Integer idempleado;
+     private DatoProfesion datoProfesion;
      private Persona persona;
-     private Puesto puesto;
-     private String telefonoempleado;
-     private Set<Usuario> usuarios = new HashSet<Usuario>(0);
-     private Set<Titulo> titulos = new HashSet<Titulo>(0);
-     private Set<DatoProfesion> datoProfesions = new HashSet<DatoProfesion>(0);
+     private Titulo titulo;
+     private String puesto;
      private Set<InfoDocente> infoDocentes = new HashSet<InfoDocente>(0);
 
     public Empleado() {
     }
 
 	
-    public Empleado(Persona persona, Puesto puesto, String telefonoempleado) {
+    public Empleado(DatoProfesion datoProfesion, Persona persona, Titulo titulo, String puesto) {
+        this.datoProfesion = datoProfesion;
         this.persona = persona;
+        this.titulo = titulo;
         this.puesto = puesto;
-        this.telefonoempleado = telefonoempleado;
     }
-    public Empleado(Persona persona, Puesto puesto, String telefonoempleado, Set<Usuario> usuarios, Set<Titulo> titulos, Set<DatoProfesion> datoProfesions, Set<InfoDocente> infoDocentes) {
+    public Empleado(DatoProfesion datoProfesion, Persona persona, Titulo titulo, String puesto, Set<InfoDocente> infoDocentes) {
+       this.datoProfesion = datoProfesion;
        this.persona = persona;
+       this.titulo = titulo;
        this.puesto = puesto;
-       this.telefonoempleado = telefonoempleado;
-       this.usuarios = usuarios;
-       this.titulos = titulos;
-       this.datoProfesions = datoProfesions;
        this.infoDocentes = infoDocentes;
     }
    
@@ -46,6 +43,13 @@ public class Empleado  implements java.io.Serializable {
     public void setIdempleado(Integer idempleado) {
         this.idempleado = idempleado;
     }
+    public DatoProfesion getDatoProfesion() {
+        return this.datoProfesion;
+    }
+    
+    public void setDatoProfesion(DatoProfesion datoProfesion) {
+        this.datoProfesion = datoProfesion;
+    }
     public Persona getPersona() {
         return this.persona;
     }
@@ -53,40 +57,19 @@ public class Empleado  implements java.io.Serializable {
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
-    public Puesto getPuesto() {
+    public Titulo getTitulo() {
+        return this.titulo;
+    }
+    
+    public void setTitulo(Titulo titulo) {
+        this.titulo = titulo;
+    }
+    public String getPuesto() {
         return this.puesto;
     }
     
-    public void setPuesto(Puesto puesto) {
+    public void setPuesto(String puesto) {
         this.puesto = puesto;
-    }
-    public String getTelefonoempleado() {
-        return this.telefonoempleado;
-    }
-    
-    public void setTelefonoempleado(String telefonoempleado) {
-        this.telefonoempleado = telefonoempleado;
-    }
-    public Set<Usuario> getUsuarios() {
-        return this.usuarios;
-    }
-    
-    public void setUsuarios(Set<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
-    public Set<Titulo> getTitulos() {
-        return this.titulos;
-    }
-    
-    public void setTitulos(Set<Titulo> titulos) {
-        this.titulos = titulos;
-    }
-    public Set<DatoProfesion> getDatoProfesions() {
-        return this.datoProfesions;
-    }
-    
-    public void setDatoProfesions(Set<DatoProfesion> datoProfesions) {
-        this.datoProfesions = datoProfesions;
     }
     public Set<InfoDocente> getInfoDocentes() {
         return this.infoDocentes;

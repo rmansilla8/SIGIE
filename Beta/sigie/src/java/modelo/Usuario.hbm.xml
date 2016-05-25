@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24/05/2016 11:12:07 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 19/05/2016 10:07:01 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="modelo.Usuario" table="usuario" catalog="sigie" optimistic-lock="version">
         <id name="idtable1" type="java.lang.Integer">
             <column name="idtable1" />
             <generator class="identity" />
         </id>
-        <many-to-one name="empleado" class="modelo.Empleado" fetch="select">
-            <column name="empleado_idempleado" not-null="true" />
+        <many-to-one name="persona" class="modelo.Persona" fetch="select">
+            <column name="persona_cui" length="15" not-null="true" />
         </many-to-one>
         <many-to-one name="rol" class="modelo.Rol" fetch="select">
             <column name="rol_idrol" not-null="true" />

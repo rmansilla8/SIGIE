@@ -2,25 +2,25 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="sigie"/>
+  <table-filter match-name="historial"/>
+  <table-filter match-name="persona"/>
+  <table-filter match-name="encargado_has_estudiante"/>
+  <table-filter match-name="grado_has_seccion"/>
+  <table-filter match-name="nivel_educativo"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="area_curricular"/>
+  <table-filter match-name="empleado"/>
+  <table-filter match-name="telefono"/>
+  <table-filter match-name="info_docente"/>
+  <table-filter match-name="grado"/>
+  <table-filter match-name="seccion"/>
+  <table-filter match-name="notas"/>
+  <table-filter match-name="rol"/>
+  <table-filter match-name="titulo"/>
+  <table-filter match-name="ciclo"/>
   <table-filter match-name="ciclo_has_grado"/>
   <table-filter match-name="encargado"/>
-  <table-filter match-name="grado"/>
-  <table-filter match-name="estudiante"/>
   <table-filter match-name="dato_profesion"/>
-  <table-filter match-name="notas"/>
-  <table-filter match-name="ciclo"/>
-  <table-filter match-name="usuario"/>
-  <table-filter match-name="titulo"/>
-  <table-filter match-name="nivel_educativo"/>
-  <table-filter match-name="historial"/>
-  <table-filter match-name="rol"/>
-  <table-filter match-name="info_docente"/>
-  <table-filter match-name="seccion"/>
-  <table-filter match-name="empleado"/>
   <table-filter match-name="alergias"/>
-  <table-filter match-name="grado_has_seccion"/>
-  <table-filter match-name="puesto"/>
-  <table-filter match-name="persona"/>
-  <table-filter match-name="area_curricular"/>
-  <table-filter match-name="encargado_has_estudiante"/>
+  <table-filter match-name="estudiante"/>
 </hibernate-reverse-engineering>
